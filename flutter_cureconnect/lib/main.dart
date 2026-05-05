@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'screens/login_page.dart';
 import 'screens/home_screen.dart';
+import 'screens/patient_info_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +47,12 @@ class CureConnectApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const HomeScreen(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const LoginPage(),
+        '/home': (context) => const HomeScreen(),
+        '/patient-info': (context) => const PatientInfoPage(),
+      },
     );
   }
 }
