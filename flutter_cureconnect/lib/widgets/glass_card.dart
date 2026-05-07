@@ -8,7 +8,6 @@ class GlassCard extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final double borderRadius;
   final Color? borderColor;
-  final Color? backgroundColor;
   final double? width;
   final double? height;
 
@@ -19,7 +18,6 @@ class GlassCard extends StatelessWidget {
     this.margin,
     this.borderRadius = 24,
     this.borderColor,
-    this.backgroundColor,
     this.width,
     this.height,
   });
@@ -31,7 +29,7 @@ class GlassCard extends StatelessWidget {
       height: height,
       margin: margin,
       decoration: BoxDecoration(
-        color: (backgroundColor ?? AppColors.card).withValues(alpha: 0.6),
+        color: AppColors.card.withValues(alpha: 0.6),
         borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(
           color: borderColor ?? AppColors.cardBorder.withValues(alpha: 0.5),
