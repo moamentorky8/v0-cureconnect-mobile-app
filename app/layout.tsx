@@ -1,42 +1,46 @@
-import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata, Viewport } from "next"
+import { Analytics } from "@vercel/analytics/next"
+import { Cairo, Manrope } from "next/font/google"
+import "./globals.css"
 
-const inter = Inter({ 
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: '--font-inter',
+  variable: "--font-manrope",
+})
+
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  variable: "--font-cairo",
 })
 
 export const metadata: Metadata = {
-  title: 'CureConnect - Smart Medication Organizer',
-  description: 'Your intelligent health companion for medication management, vitals monitoring, and emergency assistance.',
-  generator: 'v0.app',
+  title: "CureConnect - Smart Medicine Organizer",
+  description:
+    "A futuristic CureConnect mobile app for authentication, Google Maps pharmacy discovery, ESP32 sync, and ElevenLabs voice-assisted medication workflows.",
+  generator: "Codex",
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
       },
       {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
       },
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: "/icon.svg",
+        type: "image/svg+xml",
       },
     ],
-    apple: '/apple-icon.png',
+    apple: "/apple-icon.png",
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#000000',
-  width: 'device-width',
+  themeColor: "#40E0D0",
+  width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 }
 
 export default function RootLayout({
@@ -45,10 +49,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark bg-background">
-      <body className={`${inter.variable} font-sans antialiased bg-background min-h-screen`}>
+    <html lang="en" className="dark">
+      <body className={`${manrope.variable} ${cairo.variable} font-sans antialiased bg-background min-h-screen`}>
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   )
